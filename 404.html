@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Redirect to ptt</title>
+</head>
+
+<body>
+    <p id="info">Redirect to {PATH}</p>
+</body>
+<script>
+    const path = window.location.pathname
+    var newLink = ""
+    if (path.startsWith("/")) {
+        newLink = "www.ptt.cc/bbs" + path + ".html"
+    } else {
+        newLink = "www.ptt.cc/bbs/" + path + ".html"
+    }
+
+    document.getElementById('info').innerHTML = document.getElementById('info').innerHTML.replace('{PATH}', newLink)
+
+    if (navigator.userAgent.match(/Android/i)) {
+        document.location = "https://" + newLink;
+    } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        setTimeout(function () {
+            window.location.href = "https://" + newLink;
+        }, 1000);
+
+        window.location.href = "beptt://" + newLink;
+    } else {
+        window.location.href = "https://" + newLink;
+    }
+</script>
+
+</html>

@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "y_studio.ka5983.ptt2",
+      "sha256_cert_fingerprints":
+        ["EC:74:E5:E4:36:93:98:A0:03:FB:25:32:82:50:44:C7:7E:AC:50:83:D1:1E:EC:3F:93:44:89:F1:16:E5:27:0B"]
+    }
+  }
+]
