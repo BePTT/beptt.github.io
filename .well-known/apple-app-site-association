@@ -1,18 +1,23 @@
 {
+  "activitycontinuation": {
+    "apps": [
+      "L74BV34S9C.tw.ystudio.BePTT"
+    ]
+  },
   "applinks": {
-      "details": [
-           {
-             "appIDs": [ "L74BV34S9C.tw.ystudio.BePTT" ],
-             "components": [
-               {
-                  "/": "/*",
-                  "comment": "Matches any URL whose path starts with /"
-               }
-             ]
-           }
-       ]
-   },
-   "webcredentials": {
-      "apps": [ "L74BV34S9C.tw.ystudio.BePTT" ]
-   }
+    "apps": [],
+    "details": [
+      {
+        "appID": "L74BV34S9C.tw.ystudio.BePTT",
+        "paths": [
+          "*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "L74BV34S9C.tw.ystudio.BePTT"
+    ]
+  }
 }
