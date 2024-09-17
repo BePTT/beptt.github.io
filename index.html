@@ -1,9 +1,62 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>BePtt Universal Links test page</title>
-  </head>
-  <body>
-  <p>Only for test universal links</p> 
-  </body>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTT Article Redirect</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParts = window.location.pathname.split('/').filter(part => part); // 過濾掉空字串
+      const boardName = urlParts[0];
+      const articleName = urlParts[1] || '';
+
+      // 如果沒有正確提供 boardName 或 articleName，跳轉到 https://beptt.cc
+      if (!boardName || !articleName) {
+        window.location.href = 'https://beptt.cc';
+        return;
+      }
+
+      // iOS/iPadOS 檢查
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      const isAndroid = /Android/.test(navigator.userAgent);
+
+      // iOS/iPadOS 檢查是否安裝 App
+      if (isIOS) {
+        const appId = 'L74BV34S9C.tw.ystudio.BePTT';
+        const protocol = `beptt://${boardName}/${articleName}`;
+        
+        setTimeout(() => {
+          // 檢查是否安裝了 app，若無則跳轉到網頁版
+          window.location.href = `https://www.ptt.cc/bbs/${boardName}/${articleName}.html`;
+        }, 2000);
+
+        window.location.href = protocol;
+        return;
+      }
+
+      // Android 檢查是否安裝 App
+      if (isAndroid) {
+        const packageName = 'y_studio.ka5983.ptt2';
+        const appUrl = `https://bbs.beptt.cc/${boardName}/${articleName}`;
+
+        setTimeout(() => {
+          // 檢查是否安裝了 app，若無則跳轉到網頁版
+          window.location.href = `https://www.ptt.cc/bbs/${boardName}/${articleName}.html`;
+        }, 2000);
+
+        // 嘗試打開應用程式
+        const intentUrl = `intent://${boardName}/${articleName}#Intent;scheme=https;package=${packageName};end;`;
+        window.location.href = intentUrl;
+        return;
+      }
+
+      // 如果裝置不是 iOS 或 Android，或者沒有安裝 App
+      window.location.href = `https://www.ptt.cc/bbs/${boardName}/${articleName}.html`;
+    });
+  </script>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <p>正在檢查裝置並跳轉，請稍候。</p>
+</body>
 </html>
